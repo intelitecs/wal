@@ -4,7 +4,6 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
-	api "proglog/api/v1/log"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -13,7 +12,7 @@ import (
 func TestSegment(t *testing.T) {
 	dir, _ := ioutil.TempDir("", "segment_test")
 	defer os.RemoveAll(dir)
-	want := &api.Record{Value: []byte("hello world")}
+	want := &Record{Value: []byte("hello world")}
 	c := Config{}
 	c.Segment.MaxStoreBytes = 1024
 	c.Segment.MaxIndexBytes = entWidth * 3
