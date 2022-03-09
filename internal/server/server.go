@@ -2,6 +2,8 @@ package server
 
 import (
 	"context"
+
+	api "github.com/jarodez/wal/api/v1/log"
 )
 
 type Config struct {
@@ -11,7 +13,7 @@ type Config struct {
 var _LogServer = (*grpcServer)(nil)
 
 type grpcServer struct {
-	UnimplementedLogServer
+	api.UnimplementedLogServer
 	*Config
 }
 
@@ -20,23 +22,24 @@ func newgrpcServer(config *Config) (*grpcServer, error) {
 	return srv, nil
 }
 
-func (s *grpcServer) Produce(ctx context.Context, req *ProduceRequest) (*ProduceResponse, error) {
+func (s *grpcServer) Produce(ctx context.Context, req *api.ProduceRequest) (*api.ProduceResponse, error) {
+
 	offset, err := s.CommitLog.Append(req.Record)
 	if err != nil {
 		return nil, err
 	}
-	return &ProduceResponse{Offset: offset}, nil
+	return &api.ProduceResponse{Offset: offset}, nil
 }
 
-func (s *grpcServer) Consume(ctx context.Context, req *ConsumeRequest) (*ConsumeResponse, error) {
+func (s *grpcServer) Consume(ctx context.Context, req *api.ConsumeRequest) (*api.ConsumeResponse, error) {
 	record, err := s.CommitLog.Read(req.Offset)
 	if err != nil {
 		return nil, err
 	}
-	return &ConsumeResponse{Record: record}, nil
+	return &api.ConsumeResponse{Record: record}, nil
 }
 
-func (s *grpcServer) ProduceStream(stream Log_ProduceStreamServer) error {
+func (s *grpcServer) ProduceStream(stream api.Log_ProduceStreamServer) error {
 	for {
 		req, err := stream.Recv()
 		if err != nil {
@@ -52,7 +55,7 @@ func (s *grpcServer) ProduceStream(stream Log_ProduceStreamServer) error {
 	}
 }
 
-func (s *grpcServer) ConsumeStream(req *ConsumeRequest, stream Log_ConsumeStreamServer) error {
+func (s *grpcServer) ConsumeStream(req *api.ConsumeRequest, stream api.Log_ConsumeStreamServer) error {
 	for {
 		select {
 		case <-stream.Context().Done():

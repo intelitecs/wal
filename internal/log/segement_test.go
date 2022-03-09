@@ -6,13 +6,14 @@ import (
 	"os"
 	"testing"
 
+	api "github.com/jarodez/wal/api/v1/log"
 	"github.com/stretchr/testify/require"
 )
 
 func TestSegment(t *testing.T) {
 	dir, _ := ioutil.TempDir("", "segment_test")
 	defer os.RemoveAll(dir)
-	want := &Record{Value: []byte("hello world")}
+	want := &api.Record{Value: []byte("hello world")}
 	c := Config{}
 	c.Segment.MaxStoreBytes = 1024
 	c.Segment.MaxIndexBytes = entWidth * 3

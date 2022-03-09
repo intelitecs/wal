@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Mar  9 11:07:21 2022
+# Make data base, printed on Wed Mar  9 14:07:39 2022
 
 # Variables
 
@@ -227,7 +227,7 @@ SBT_HOME = /home/imhotep/.sdkman/candidates/sbt/current
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d044ed84-15f2-4529-b678-6b3aabdbd32f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6807d446-0629-448b-8285-c1316d34ba6a.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -281,7 +281,6 @@ MAKEFILES :=
 # environment
 SDKMAN_CANDIDATES_DIR = /home/imhotep/.sdkman/candidates
 # environment
- 
 LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /home/imhotep/anaconda3/bin/python
@@ -289,6 +288,7 @@ CONDA_PYTHON_EXE = /home/imhotep/anaconda3/bin/python
 SPRINGBOOT_HOME = /home/imhotep/.sdkman/candidates/springboot/current
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+ 
 # environment
 GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ec7d0ab8_df26_4f62_a307_e358443be8be
 # automatic
@@ -316,7 +316,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 625470
+VSCODE_PID = 667043
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -355,6 +355,7 @@ Makefile:
 test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 7):
 	go test -race ./...
@@ -387,6 +388,6 @@ compile:
 # strcache performance: lookups = 26 / hit rate = 23%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Wed Mar  9 11:07:21 2022
+# Finished Make data base on Wed Mar  9 14:07:39 2022
 
  

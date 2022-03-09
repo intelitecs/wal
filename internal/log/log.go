@@ -1,19 +1,17 @@
 package log
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
 	"path"
 
-	//api "proglog/api/v1/log"
-
-	//api "proglog/api/v1/log"
 	"sort"
 	"strconv"
 	"strings"
 	"sync"
+
+	api "github.com/jarodez/wal/api/v1/log"
 )
 
 type Log struct {
@@ -73,7 +71,7 @@ func (l *Log) setup() error {
 	return nil
 }
 
-func (l *Log) Append(record *Record) (uint64, error) {
+func (l *Log) Append(record *api.Record) (uint64, error) {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 	off, err := l.activeSegment.Append(record)
@@ -86,7 +84,7 @@ func (l *Log) Append(record *Record) (uint64, error) {
 	return off, err
 }
 
-func (l *Log) Read(off uint64) (*Record, error) {
+func (l *Log) Read(off uint64) (*api.Record, error) {
 	l.mu.RLock()
 	l.mu.RUnlock()
 	var s *segment
@@ -97,7 +95,7 @@ func (l *Log) Read(off uint64) (*Record, error) {
 		}
 	}
 	if s == nil || s.nextOffset <= off {
-		return nil, fmt.Errorf("offset out of range: %d", off)
+		return nil, api.ErrOffsetOutOfRange{Offset: off}
 	}
 	return s.Read(off)
 }
