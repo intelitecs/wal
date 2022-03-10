@@ -15,7 +15,7 @@ func (e ErrOffsetOutOfRange) GRPCStatus() *status.Status {
 	st := status.New(404, fmt.Sprintf("offset out of range: %d", e.Offset))
 	msg := fmt.Sprintf("The requested offset is outside the log's range: %d", e.Offset)
 	d := &errdetails.LocalizedMessage{
-		Locale:  "fr-FR",
+		Locale:  "en-US",
 		Message: msg,
 	}
 	std, err := st.WithDetails(d)

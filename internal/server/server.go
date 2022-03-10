@@ -4,10 +4,16 @@ import (
 	"context"
 
 	api "github.com/jarodez/wal/api/v1/log"
+	"google.golang.org/grpc"
 )
 
 type Config struct {
 	CommitLog CommitLog
+}
+
+type CommitLog interface {
+	Append(*api.Record) (uint64, error)
+	Read(uint64) (*api.Record, error)
 }
 
 var _LogServer = (*grpcServer)(nil)
@@ -64,7 +70,7 @@ func (s *grpcServer) ConsumeStream(req *api.ConsumeRequest, stream api.Log_Consu
 			res, err := s.Consume(stream.Context(), req)
 			switch err.(type) {
 			case nil:
-			case ErrOffsetOutOfRange:
+			case api.ErrOffsetOutOfRange:
 				continue
 			default:
 				return err
@@ -75,4 +81,15 @@ func (s *grpcServer) ConsumeStream(req *api.ConsumeRequest, stream api.Log_Consu
 			req.Offset++
 		}
 	}
+}
+
+func NewGRPCServer(config *Config) (*grpc.Server, error) {
+	gsrv := grpc.NewServer()
+	srv, err := newgrpcServer(config)
+	if err != nil {
+		return nil, err
+	}
+
+	api.RegisterLogServer(gsrv, srv)
+	return gsrv, nil
 }

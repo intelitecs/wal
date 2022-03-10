@@ -47,12 +47,6 @@ func testAppendRead(t *testing.T, log *Log) {
 	require.Equal(t, append.Value, read.Value)
 }
 
-func testOffsetOutOfRange(t *testing.T, log *Log) {
-	record, err := log.Read(1)
-	require.Nil(t, record)
-	require.Error(t, err)
-}
-
 func testInitWithSegments(t *testing.T, log *Log) {
 	append := &api.Record{
 		Value: []byte("hello world"),
@@ -106,4 +100,11 @@ func testTruncate(t *testing.T, log *Log) {
 	require.NoError(t, err)
 	_, err = log.Read(0)
 	require.NoError(t, err)
+}
+
+func testOffsetOutOfRange(t *testing.T, log *Log) {
+	read, err := log.Read(1)
+	require.Nil(t, read)
+	apiErr := err.(api.ErrOffsetOutOfRange)
+	require.Equal(t, uint64(1), apiErr.Offset)
 }
