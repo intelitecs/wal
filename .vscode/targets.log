@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Mar  9 14:07:39 2022
+# Make data base, printed on Fri Mar 11 04:39:59 2022
 
 # Variables
 
@@ -53,7 +53,7 @@ VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:63225
+JOURNAL_STREAM = 9:64893
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -85,7 +85,7 @@ _ = /usr/bin/code
 # environment
 INFOPATH = /usr/local/texlive/2019/texmf-dist/doc/info
 # environment
-MANAGERPID = 4500
+MANAGERPID = 4526
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -105,7 +105,7 @@ NODEJSPATH = /usr/local/node-v12.14.1-linux-x64
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/imhotep-Precision-7730:@/tmp/.ICE-unix/4754,unix/imhotep-Precision-7730:/tmp/.ICE-unix/4754
+SESSION_MANAGER = local/imhotep-Precision-7730:@/tmp/.ICE-unix/4783,unix/imhotep-Precision-7730:/tmp/.ICE-unix/4783
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -129,7 +129,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 4cd15a4a68fc4f52a9ef2486f635c210
+INVOCATION_ID = b7b8761f4ea34bcab72fdcd16fa1f866
 # environment
 LDFLAGS = -L/usr/local/gtk/lib
 # default
@@ -159,7 +159,7 @@ GROOVY_HOME = /home/imhotep/.sdkman/candidates/groovy/current
 # environment
 ANT_HOME = /home/imhotep/.sdkman/candidates/ant/current
 # environment
-SSH_AGENT_PID = 4700
+SSH_AGENT_PID = 4726
 # environment
 PKG_CONFIG_PATH = /usr/local/gtk/lib/pkgconfig
 # environment
@@ -227,7 +227,7 @@ SBT_HOME = /home/imhotep/.sdkman/candidates/sbt/current
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-6807d446-0629-448b-8285-c1316d34ba6a.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7ec82952-207d-4f32-9090-8761ae6d51d0.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -245,7 +245,7 @@ CONDA_SHLVL = 1
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/imhotep/go/src/proglog
+OLDPWD = /home/imhotep/go/src
 # default
 .VARIABLES := 
 # automatic
@@ -285,16 +285,16 @@ LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /home/imhotep/anaconda3/bin/python
 # environment
+ 
 SPRINGBOOT_HOME = /home/imhotep/.sdkman/candidates/springboot/current
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
- 
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ec7d0ab8_df26_4f62_a307_e358443be8be
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c8b540de_5ca5_4e99_8cf8_401fac1dd4f8
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.85
+GNOME_TERMINAL_SERVICE = :1.98
 # default
 SUFFIXES := 
 # environment
@@ -316,7 +316,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 667043
+VSCODE_PID = 419960
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -348,17 +348,16 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-09 10:53:26.361557015
+#  Last modified 2022-03-10 11:25:56.335928348
 #  File has been updated.
 #  Successfully updated.
 
 test:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 7):
-	go test -race ./...
+	go test -race ./internal/...
 
 compile:
 #  Implicit rule search has not been done.
@@ -388,6 +387,6 @@ compile:
 # strcache performance: lookups = 26 / hit rate = 23%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Wed Mar  9 14:07:39 2022
+# Finished Make data base on Fri Mar 11 04:39:59 2022
 
  

@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	api "github.com/jarodez/wal/api/v1/log"
+	api "github.com/intelitecs/wal/api/v1/log"
 )
 
 type Log struct {
