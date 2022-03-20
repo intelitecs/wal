@@ -1,0 +1,14 @@
+{
+    "CN": "Intelitec Log Certificate Authority (ILCA)",
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [{
+        "C": "Côte d'ivoire",
+        "L": "Abidjan",
+        "ST": "Côte d'ivoire",
+        "O": "Intelitec",
+        "OU": "Développement Digital"
+    }]
+}

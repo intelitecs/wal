@@ -4,11 +4,13 @@ import (
 	"context"
 
 	api "github.com/intelitecs/wal/api/v1/log"
+	"github.com/intelitecs/wal/internal/server/security/authorization/acl"
 	"google.golang.org/grpc"
 )
 
 type Config struct {
-	CommitLog CommitLog
+	CommitLog  CommitLog
+	Authorizer acl.Authorizer
 }
 
 type CommitLog interface {
@@ -83,8 +85,8 @@ func (s *grpcServer) ConsumeStream(req *api.ConsumeRequest, stream api.Log_Consu
 	}
 }
 
-func NewGRPCServer(config *Config) (*grpc.Server, error) {
-	gsrv := grpc.NewServer()
+func NewGRPCServer(config *Config, opts ...grpc.ServerOption) (*grpc.Server, error) {
+	gsrv := grpc.NewServer(opts...)
 	srv, err := newgrpcServer(config)
 	if err != nil {
 		return nil, err

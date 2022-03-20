@@ -3,6 +3,9 @@ module github.com/intelitecs/wal
 go 1.17
 
 require (
+	github.com/Masterminds/squirrel v1.5.2
+	github.com/casbin/casbin v1.9.1
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/stretchr/testify v1.7.0
 	github.com/tysonmote/gommap v0.0.1
 	google.golang.org/genproto v0.0.0-20210510173355-fb37daa5cd7a
@@ -11,9 +14,12 @@ require (
 )
 
 require (
+	github.com/Knetic/govaluate v3.0.1-0.20171022003610-9aa49832a739+incompatible // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f // indirect
 	golang.org/x/sys v0.0.0-20211019181941-9d821ace8654 // indirect

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Mar 11 04:39:59 2022
+# Make data base, printed on Thu Mar 17 13:23:11 2022
 
 # Variables
 
@@ -45,15 +45,17 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/imhotep/go/src/wal
+CURDIR := /home/imhotep/go/src/github.com/intelitecs/wal
 # makefile
 SHELL = /bin/sh
+# makefile (from 'Makefile', line 1)
+CONFIG_PATH = ${HOME}/.wal
 # environment
 VTE_VERSION = 6003
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 9:64893
+JOURNAL_STREAM = 9:67023
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -85,11 +87,11 @@ _ = /usr/bin/code
 # environment
 INFOPATH = /usr/local/texlive/2019/texmf-dist/doc/info
 # environment
-MANAGERPID = 4526
+MANAGERPID = 4817
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
-VSCODE_CWD = /home/imhotep/go/src/wal
+VSCODE_CWD = /home/imhotep/go/src/github.com/intelitecs/wal
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
@@ -97,7 +99,7 @@ GSETTINGS_SCHEMA_DIR = /home/imhotep/anaconda3/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/texlive/2019/bin/x86_64-linux:/home/imhotep/.cargo/bin:/u01/app/oracle/product/11.2.0/xe/bin:/home/imhotep/.yarn/bin:/home/imhotep/.config/yarn/global/node_modules/.bin:/home/imhotep/.sdkman/candidates/java/current/bin:/home/imhotep/anaconda3/bin:/home/imhotep/anaconda3/condabin:/usr/local/protobuf/bin:/home/imhotep/.cargo/bin:/home/imhotep/.perl6/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:/home/imhotep/.sdkman/candidates/springboot/current/bin:/home/imhotep/.sdkman/candidates/scala/current/bin:/home/imhotep/.sdkman/candidates/sbt/current/bin:/home/imhotep/.sdkman/candidates/maven/current/bin:/home/imhotep/.sdkman/candidates/kotlin/current/bin:/home/imhotep/.sdkman/candidates/groovy/current/bin:/home/imhotep/.sdkman/candidates/gradle/current/bin:/home/imhotep/.sdkman/candidates/ant/current/bin:/home/imhotep/.local/bin:/home/imhotep/anaconda3/bin:/home/imhotep/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/home/imhotep/.ghcup/bin:/usr/lib/dart/bin:/usr/lib/dart/bin:/home/imhotep/go/bin
+PATH = /usr/local/go/bin:/usr/local/texlive/2019/bin/x86_64-linux:/home/imhotep/.cargo/bin:/u01/app/oracle/product/11.2.0/xe/bin:/home/imhotep/.yarn/bin:/home/imhotep/.config/yarn/global/node_modules/.bin:/home/imhotep/.sdkman/candidates/java/current/bin:/home/imhotep/anaconda3/bin:/home/imhotep/anaconda3/condabin:/usr/local/protobuf/bin:/home/imhotep/.cargo/bin:/home/imhotep/.perl6/bin:/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:/home/imhotep/.sdkman/candidates/springboot/current/bin:/home/imhotep/.sdkman/candidates/scala/current/bin:/home/imhotep/.sdkman/candidates/sbt/current/bin:/home/imhotep/.sdkman/candidates/maven/current/bin:/home/imhotep/.sdkman/candidates/kotlin/current/bin:/home/imhotep/.sdkman/candidates/groovy/current/bin:/home/imhotep/.sdkman/candidates/gradle/current/bin:/home/imhotep/.sdkman/candidates/ant/current/bin:/home/imhotep/.local/bin:/home/imhotep/anaconda3/bin:/home/imhotep/anaconda3/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/home/imhotep/.ghcup/bin:/usr/lib/dart/bin:/usr/lib/dart/bin:/home/imhotep/go/bin
 # environment
 FLUTTER_PATH = /home/imhotep/FluterSDK/flutter/bin
 # environment
@@ -105,7 +107,7 @@ NODEJSPATH = /usr/local/node-v12.14.1-linux-x64
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/imhotep-Precision-7730:@/tmp/.ICE-unix/4783,unix/imhotep-Precision-7730:/tmp/.ICE-unix/4783
+SESSION_MANAGER = local/imhotep-Precision-7730:@/tmp/.ICE-unix/5131,unix/imhotep-Precision-7730:/tmp/.ICE-unix/5131
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -129,7 +131,7 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = b7b8761f4ea34bcab72fdcd16fa1f866
+INVOCATION_ID = f6d1ec26ef0e4b46bab5431a9c4e2e9f
 # environment
 LDFLAGS = -L/usr/local/gtk/lib
 # default
@@ -151,7 +153,7 @@ CONDA_EXE = /home/imhotep/anaconda3/bin/conda
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /home/imhotep/go/src/wal
+PWD = /home/imhotep/go/src/github.com/intelitecs/wal
 # environment
 GROOVY_HOME = /home/imhotep/.sdkman/candidates/groovy/current
 # default
@@ -159,7 +161,7 @@ GROOVY_HOME = /home/imhotep/.sdkman/candidates/groovy/current
 # environment
 ANT_HOME = /home/imhotep/.sdkman/candidates/ant/current
 # environment
-SSH_AGENT_PID = 4726
+SSH_AGENT_PID = 5069
 # environment
 PKG_CONFIG_PATH = /usr/local/gtk/lib/pkgconfig
 # environment
@@ -183,7 +185,7 @@ J2REDIR = /home/imhotep/.sdkman/candidates/java/current
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/imhotep/.config/Code/CachedData/b5205cc8eb4fbaa726835538cd82372cc0222d43
+VSCODE_CODE_CACHE_PATH = /home/imhotep/.config/Code/CachedData/c722ca6c7eed3d7987c0d5c3df5c45f6b15e77d1
 # environment
 LOGNAME = imhotep
 # environment
@@ -227,31 +229,35 @@ SBT_HOME = /home/imhotep/.sdkman/candidates/sbt/current
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7ec82952-207d-4f32-9090-8761ae6d51d0.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2df9e4a0-0408-4ee5-85ba-46011bed856e.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
 USER = imhotep
 # makefile
-.DEFAULT_GOAL := compile
+.DEFAULT_GOAL := init
 # environment
 XDG_CURRENT_DESKTOP = Unity
+# environment
+GOROOT = /usr/local/go
 # default
 MAKE = $(MAKE_COMMAND)
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 CONDA_SHLVL = 1
+# makefile (from 'Makefile', line 2)
+TLS_CONFIG_PATH = internal/server/security/authentication/tls/cloudflare/config
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/imhotep/go/src
+OLDPWD = /home/imhotep
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-133b4eef-1.65.0-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-133b4eef-1.65.2-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -273,6 +279,7 @@ QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # environment
+ 
 ORACLE_SID = XE
 # default
 MAKEFILES := 
@@ -285,16 +292,15 @@ LC_ALL = C
 # environment
 CONDA_PYTHON_EXE = /home/imhotep/anaconda3/bin/python
 # environment
- 
 SPRINGBOOT_HOME = /home/imhotep/.sdkman/candidates/springboot/current
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/c8b540de_5ca5_4e99_8cf8_401fac1dd4f8
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d5330b37_5fa5_450a_95d0_c3b177e3c1d5
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.98
+GNOME_TERMINAL_SERVICE = :1.86
 # default
 SUFFIXES := 
 # environment
@@ -303,6 +309,8 @@ _CE_M =
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
 WINDOWPATH = 2
+# makefile (from 'Makefile', line 3)
+CASBIN_CONFIG_PATH = internal/server/security/authorization/acl/casbin
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
@@ -316,11 +324,11 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 419960
+VSCODE_PID = 89244
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
-# Load=153/1024=15%, Rehash=0, Collisions=20/178=11%
+# Load=157/1024=15%, Rehash=0, Collisions=26/190=14%
 
 # Pattern-specific Variable Values
 
@@ -328,15 +336,23 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 66306, inode 9666891): 13 files, no impossibilities.
+# . (device 66306, inode 9666891): 17 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 17 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
+
+genservices:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 35):
+	protoc --go-grpc_out=require_unimplemented_servers=false:internal/adapters/framework/left/grpc  \
+	--proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*svc.proto
 
 # Not a target:
 all:
@@ -345,27 +361,64 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
+.PHONY: init test genprotobuf
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+/home/imhotep/.wal/policy.csv:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 22):
+	cp $(CASBIN_CONFIG_PATH)/policy.csv  $(CONFIG_PATH)/policy.csv
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-10 11:25:56.335928348
+#  Last modified 2022-03-17 13:21:26.734583396
 #  File has been updated.
 #  Successfully updated.
 
-test:
+test: /home/imhotep/.wal/model.conf /home/imhotep/.wal/policy.csv
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Modification time never checked.
+#  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
+#  recipe to execute (from 'Makefile', line 27):
 	go test -race ./internal/...
 
-compile:
+protogen: genmessages genservices
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 3):
-	protoc api/v1/proto/*.proto --go_out=:./api/v1  --go-grpc_out=./api/v1  
-	 
+#  recipe to execute (from 'Makefile', line 39):
+	echo 'Generated messages and services'
+	
+
+genprotobuf:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+gencert:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 12):
+	cfssl gencert -initca=true ${TLS_CONFIG_PATH}/ca-csr.json | cfssljson -bare ca
+	cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=${TLS_CONFIG_PATH}/ca-config.json -profile=server ${TLS_CONFIG_PATH}/server-csr.json | cfssljson -bare server
+	cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=${TLS_CONFIG_PATH}/ca-config.json -profile=client -cn="root" ${TLS_CONFIG_PATH}/client-csr.json | cfssljson -bare root-client
+	cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=${TLS_CONFIG_PATH}/ca-config.json -profile=client -cn="nobody" ${TLS_CONFIG_PATH}/client-csr.json | cfssljson -bare nobody-client
+	mv *.pem *.csr ${CONFIG_PATH}/
+
+/home/imhotep/.wal/model.conf:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 19):
+	cp $(CASBIN_CONFIG_PATH)/model.conf $(CONFIG_PATH)/model.conf
 
 # Not a target:
 .DEFAULT:
@@ -373,20 +426,35 @@ compile:
 #  Modification time never checked.
 #  File has not been updated.
 
+init:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 8):
+	mkdir -p ${CONFIG_PATH}
+
+genmessages:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 32):
+	protoc --go_out=:internal/adapters/framework/left/grpc --proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*msg.proto
+
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/16=0%
+# Load=14/1024=1%, Rehash=0, Collisions=0/35=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 159 B / avg = 7 B
-# current buf: size = 8162 B / used = 159 B / count = 20 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 32 / storage = 328 B / avg = 10 B
+# current buf: size = 8162 B / used = 328 B / count = 32 / avg = 10 B
 
-# strcache performance: lookups = 26 / hit rate = 23%
+# strcache performance: lookups = 55 / hit rate = 41%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Fri Mar 11 04:39:59 2022
+# Load=32/8192=0%, Rehash=0, Collisions=1/55=2%
+# Finished Make data base on Thu Mar 17 13:23:11 2022
 
  
