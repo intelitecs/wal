@@ -7,11 +7,14 @@ import (
 	"os"
 	"testing"
 
+	// application
+
+	// adapters
+
 	"github.com/intelitecs/wal/internal/adapters/app/api"
-	"github.com/intelitecs/wal/internal/adapters/core/arithmetic"
+	"github.com/intelitecs/wal/internal/adapters/core/arithmetics"
 	"github.com/intelitecs/wal/internal/adapters/framework/left/grpc/pb"
 	"github.com/intelitecs/wal/internal/adapters/framework/right/db"
-	"github.com/intelitecs/wal/internal/ports"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/test/bufconn"
@@ -23,31 +26,42 @@ var lis *bufconn.Listener
 
 func init() {
 	var err error
-	dbDriver := os.Getenv("DB_DRIVER")
-	dsourceName := os.Getenv("DS_NAME")
 	lis = bufconn.Listen(bufSize)
 	grpcServer := grpc.NewServer()
 
-	// ports
-	var dbAdapter ports.DBPort
-	var core ports.ArithmeticPort
-	var appAdapter ports.APIPort
-	var gRPCAdapter ports.GRPCPort
+	dbaseDriver := os.Getenv("DB_DRIVER")
+	dsourceName := os.Getenv("DS_NAME")
 
-	dbAdapter, err = db.NewAdapter(dbDriver, dsourceName)
+	dbAdapter, err := db.NewAdapter(dbaseDriver, dsourceName)
 	if err != nil {
-		log.Fatalf("failed to initiate database connection: %v", err)
+		log.Fatalf("failed to initiate dbase connection: %v", err)
 	}
-	defer dbAdapter.CloseDBConnection()
 
-	core = arithmetic.NewAdapter()
-	appAdapter = api.NewApplication(dbAdapter, core)
-	gRPCAdapter = NewAdapter(appAdapter)
+	// core
+	core := arithmetics.NewAdapter()
+
+	// NOTE: The application's right side port for driven
+	// adapters, in this case, a db adapter.
+	// Therefore the type for the dbAdapter parameter
+	// that is to be injected into the NewApplication will
+	// be of type DbPort
+	applicationAPI := api.NewApplication(dbAdapter, core)
+
+	// NOTE: We use dependency injection to give the grpc
+	// adapter access to the application, therefore
+	// the location of the port is inverted. That is
+	// the grpc adapter accesses the hexagon's driving port at the
+	// application boundary via dependency injection,
+	// therefore the type for the applicaitonAPI parameter
+	// that is to be injected into the gRPC adapter will
+	// be of type APIPort which is our hexagons left side
+	// port for driving adapters
+	gRPCAdapter := NewAdapter(applicationAPI)
+
 	pb.RegisterArithmeticServiceServer(grpcServer, gRPCAdapter)
-
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil {
-			log.Fatalf("test server start failed: %v", err)
+			log.Fatalf("test server start error: %v", err)
 		}
 	}()
 }
@@ -68,66 +82,79 @@ func TestGetAddition(t *testing.T) {
 	ctx := context.Background()
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
+
 	client := pb.NewArithmeticServiceClient(conn)
+
 	params := &pb.OperationParameters{
 		A: 1,
-		B: 2,
+		B: 1,
 	}
+
 	answer, err := client.GetAddition(ctx, params)
 	if err != nil {
-		t.Fatalf("expect :%v, got %v", nil, err)
+		t.Fatalf("expected: %v, got: %v", nil, err)
 	}
-	require.Equal(t, answer.Value, int32(3))
 
+	require.Equal(t, answer.Value, int32(2))
 }
 
-func TestGeSubtration(t *testing.T) {
+func TestGetSubtraction(t *testing.T) {
 	ctx := context.Background()
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
+
 	client := pb.NewArithmeticServiceClient(conn)
+
 	params := &pb.OperationParameters{
-		A: 10,
-		B: 2,
+		A: 1,
+		B: 1,
 	}
+
 	answer, err := client.GetSubtraction(ctx, params)
 	if err != nil {
-		t.Fatalf("expect :%v, got %v", nil, err)
+		t.Fatalf("expected: %v, got: %v", nil, err)
 	}
-	require.Equal(t, answer.Value, int32(8))
 
+	require.Equal(t, answer.Value, int32(0))
 }
 
 func TestGetMultiplication(t *testing.T) {
 	ctx := context.Background()
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
+
 	client := pb.NewArithmeticServiceClient(conn)
+
 	params := &pb.OperationParameters{
-		A: 8,
-		B: 2,
+		A: 1,
+		B: 1,
 	}
+
 	answer, err := client.GetMultiplication(ctx, params)
 	if err != nil {
-		t.Fatalf("expect :%v, got %v", nil, err)
-	}
-	require.Equal(t, answer.Value, int32(16))
 
+		t.Fatalf("expected: %v, got: %v", nil, err)
+	}
+
+	require.Equal(t, answer.Value, int32(1))
 }
 
 func TestGetDivision(t *testing.T) {
 	ctx := context.Background()
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
+
 	client := pb.NewArithmeticServiceClient(conn)
+
 	params := &pb.OperationParameters{
-		A: 10,
-		B: 2,
+		A: 1,
+		B: 1,
 	}
+
 	answer, err := client.GetDivision(ctx, params)
 	if err != nil {
-		t.Fatalf("expect :%v, got %v", nil, err)
+		t.Fatalf("expected: %v, got: %v", nil, err)
 	}
-	require.Equal(t, answer.Value, int32(5))
 
+	require.Equal(t, answer.Value, int32(1))
 }

@@ -8,6 +8,8 @@ RUN apk update \
      mysql-client \
      build-base
 
+RUN apk add git
+
 RUN mkdir /app
 WORKDIR /app
 

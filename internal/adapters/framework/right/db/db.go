@@ -36,7 +36,7 @@ func (a *Adapter) CloseDBConnection() {
 
 }
 
-func (a *Adapter) AddToHistory(answer int32, operation string) error {
+func (a *Adapter) AddArithmeticToHistory(answer int32, operation string) error {
 	queryString, args, err := sq.Insert("arith_history").Columns("date", "answer", "operation").Values(time.Now(), answer, operation).ToSql()
 	if err != nil {
 		return err

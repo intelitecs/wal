@@ -3,11 +3,11 @@ package api
 import "github.com/intelitecs/wal/internal/ports"
 
 type Application struct {
-	db    ports.DBPort
-	arith ports.ArithmeticPort
+	db    ports.ArithmeticDB
+	arith ports.Arithmetics
 }
 
-func NewApplication(db ports.DBPort, arith ports.ArithmeticPort) *Application {
+func NewApplication(db ports.ArithmeticDB, arith ports.Arithmetics) *Application {
 	return &Application{arith: arith, db: db}
 }
 
@@ -16,7 +16,7 @@ func (a *Application) GetAddition(x, y int32) (int32, error) {
 	if err != nil {
 		return 0, err
 	}
-	err = a.db.AddToHistory(answer, "addition")
+	err = a.db.AddArithmeticToHistory(answer, "addition")
 	if err != nil {
 		return 0, err
 	}
@@ -28,7 +28,7 @@ func (a *Application) GetSubtraction(x, y int32) (int32, error) {
 	if err != nil {
 		return 0, err
 	}
-	err = a.db.AddToHistory(answer, "subtraction")
+	err = a.db.AddArithmeticToHistory(answer, "subtraction")
 	if err != nil {
 		return 0, err
 	}
@@ -40,7 +40,7 @@ func (a *Application) GetMultiplication(x, y int32) (int32, error) {
 	if err != nil {
 		return 0, err
 	}
-	err = a.db.AddToHistory(answer, "multiplication")
+	err = a.db.AddArithmeticToHistory(answer, "multiplication")
 	if err != nil {
 		return 0, err
 	}
@@ -53,7 +53,7 @@ func (a *Application) GetDivision(x, y int32) (int32, error) {
 		return 0, err
 	}
 
-	err = a.db.AddToHistory(answer, "division")
+	err = a.db.AddArithmeticToHistory(answer, "division")
 	if err != nil {
 		return 0, err
 	}
