@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/intelitecs/wal/internal/adapters/app/api"
-	"github.com/intelitecs/wal/internal/adapters/core/arithmetics"
-	gRPC "github.com/intelitecs/wal/internal/adapters/framework/left/grpc"
-	"github.com/intelitecs/wal/internal/adapters/framework/right/db"
+	"github.com/intelitecs/wal/internal/arithmetics/domain"
+	service "github.com/intelitecs/wal/internal/arithmetics/service"
 	"github.com/intelitecs/wal/internal/ports"
+	"github.com/intelitecs/wal/internal/server/db"
+	gRPC "github.com/intelitecs/wal/internal/server/grpc"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	// ports
 
 	var dbAdapter ports.ArithmeticDB
-	var core ports.Arithmetics
+	var core domain.Arithmetics
 	var appAdapter ports.APIPort
 	var gRPCAdapter ports.GRPCPort
 
@@ -31,9 +31,9 @@ func main() {
 
 	// core
 
-	core = arithmetics.NewAdapter()
+	core = domain.NewAdapter()
 
-	appAdapter = api.NewApplication(dbAdapter, core)
+	appAdapter = service.NewArithmeticApplication(dbAdapter, core)
 	gRPCAdapter = gRPC.NewAdapter(appAdapter)
 	gRPCAdapter.Run()
 

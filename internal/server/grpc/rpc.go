@@ -1,17 +1,17 @@
-package rpc
+package grpc
 
 import (
 	"context"
 
-	"github.com/intelitecs/wal/internal/adapters/framework/left/grpc/pb"
+	arithmetics "github.com/intelitecs/wal/api/v1/arithmetics"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 // GetAddition gets the result of adding parameters a and b
-func (grpca *Adapter) GetAddition(ctx context.Context, req *pb.OperationParameters) (*pb.Answer, error) {
+func (grpca *Adapter) GetAddition(ctx context.Context, req *arithmetics.OperationParameters) (*arithmetics.Answer, error) {
 	var err error
-	ans := &pb.Answer{}
+	ans := &arithmetics.Answer{}
 
 	if req.GetA() == 0 || req.GetB() == 0 {
 		return ans, status.Error(codes.InvalidArgument, "missing required")
@@ -22,7 +22,7 @@ func (grpca *Adapter) GetAddition(ctx context.Context, req *pb.OperationParamete
 		return ans, status.Error(codes.Internal, "unexpected error")
 	}
 
-	ans = &pb.Answer{
+	ans = &arithmetics.Answer{
 		Value: answer,
 	}
 
@@ -30,9 +30,9 @@ func (grpca *Adapter) GetAddition(ctx context.Context, req *pb.OperationParamete
 }
 
 // GetSubtraction gets the result of subtracting parameters a and b
-func (grpca *Adapter) GetSubtraction(ctx context.Context, req *pb.OperationParameters) (*pb.Answer, error) {
+func (grpca *Adapter) GetSubtraction(ctx context.Context, req *arithmetics.OperationParameters) (*arithmetics.Answer, error) {
 	var err error
-	ans := &pb.Answer{}
+	ans := &arithmetics.Answer{}
 
 	if req.GetA() == 0 || req.GetB() == 0 {
 		return ans, status.Error(codes.InvalidArgument, "missing required")
@@ -43,7 +43,7 @@ func (grpca *Adapter) GetSubtraction(ctx context.Context, req *pb.OperationParam
 		return ans, status.Error(codes.Internal, "unexpected error")
 	}
 
-	ans = &pb.Answer{
+	ans = &arithmetics.Answer{
 		Value: answer,
 	}
 
@@ -51,9 +51,9 @@ func (grpca *Adapter) GetSubtraction(ctx context.Context, req *pb.OperationParam
 }
 
 // GetMultiplication gets the result of multiplying parameters a and b
-func (grpca *Adapter) GetMultiplication(ctx context.Context, req *pb.OperationParameters) (*pb.Answer, error) {
+func (grpca *Adapter) GetMultiplication(ctx context.Context, req *arithmetics.OperationParameters) (*arithmetics.Answer, error) {
 	var err error
-	ans := &pb.Answer{}
+	ans := &arithmetics.Answer{}
 
 	if req.GetA() == 0 || req.GetB() == 0 {
 		return ans, status.Error(codes.InvalidArgument, "missing required")
@@ -64,7 +64,7 @@ func (grpca *Adapter) GetMultiplication(ctx context.Context, req *pb.OperationPa
 		return ans, status.Error(codes.Internal, "unexpected error")
 	}
 
-	ans = &pb.Answer{
+	ans = &arithmetics.Answer{
 		Value: answer,
 	}
 
@@ -72,9 +72,9 @@ func (grpca *Adapter) GetMultiplication(ctx context.Context, req *pb.OperationPa
 }
 
 // GetDivision gets the result of dividing parameters a and b
-func (grpca *Adapter) GetDivision(ctx context.Context, req *pb.OperationParameters) (*pb.Answer, error) {
+func (grpca *Adapter) GetDivision(ctx context.Context, req *arithmetics.OperationParameters) (*arithmetics.Answer, error) {
 	var err error
-	ans := &pb.Answer{}
+	ans := &arithmetics.Answer{}
 
 	if req.GetA() == 0 || req.GetB() == 0 {
 		return ans, status.Error(codes.InvalidArgument, "missing required")
@@ -85,7 +85,7 @@ func (grpca *Adapter) GetDivision(ctx context.Context, req *pb.OperationParamete
 		return ans, status.Error(codes.Internal, "unexpected error")
 	}
 
-	ans = &pb.Answer{
+	ans = &arithmetics.Answer{
 		Value: answer,
 	}
 

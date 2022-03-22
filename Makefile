@@ -15,38 +15,19 @@ gencert:
 	cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=${TLS_CONFIG_PATH}/ca-config.json -profile=client -cn="nobody" ${TLS_CONFIG_PATH}/client-csr.json | cfssljson -bare nobody-client
 	mv *.pem *.csr ${CONFIG_PATH}/
 
-$(CONFIG_PATH)/model.conf:
-	cp $(CASBIN_CONFIG_PATH)/model.conf $(CONFIG_PATH)/model.conf
+clean:
+	rm -rdf $(CONFIG_PATH)/*
 
-$(CONFIG_PATH)/policy.csv:
-	cp $(CASBIN_CONFIG_PATH)/policy.csv  $(CONFIG_PATH)/policy.csv
+cpsecurity_config:
+	cp $(CASBIN_CONFIG_PATH)/*  $(CONFIG_PATH)/
+
+test: cpsecurity_config
+	go test -race ./test/...
+
+protocgen:
+	protoc --go_out=:api/v1 --proto_path=:api/v1 api/v1/proto/*msg.proto
+	protoc --go-grpc_out=require_unimplemented_servers=false:api/v1 --proto_path=:api/v1/proto  api/v1/proto/*svc.proto
 
 
-.PHONY: test
-test: $(CONFIG_PATH)/model.conf $(CONFIG_PATH)/policy.csv
-	go test -race ./internal/...
-
-.PHONY: genprotobuf
-
-genmessages:
-	protoc --go_out=:internal/adapters/framework/left/grpc --proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*msg.proto
-
-genservices:
-	protoc --go-grpc_out=require_unimplemented_servers=false:internal/adapters/framework/left/grpc  \
-	--proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*svc.proto
-
-protogen: genmessages genservices
-	echo 'Generated messages and services'
-
-all: genmsg gensvc
-	echo 'Generate GRPC messages and services'
-
-genmsg:
-	protoc --go_out=:internal/adapters/framework/left/grpc --proto_path=:internal/adapters/framework/left/grpc/proto \
-	internal/adapters/framework/left/grpc/proto/*msg.proto
-
-gensvc:
-	protoc --go-grpc_out=require_unimplemented_servers=false:internal/adapters/framework/left/grpc \
-	--proto_path=:internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*svc.proto
-
-	
+all: clean cpsecurity_config gencert
+	echo 'all done!'

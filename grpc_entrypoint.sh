@@ -9,7 +9,7 @@ while [ "$maxTries" -gt 0 ] && ! mysql -h "$MYSQL_HOST" -P "$MYSQL_PORT" -u"$MYS
     maxTries=$((maxTries - 1))
     sleep 3
 done
-echo
+echo ""
 if [ "$maxTries" -le 0]; then 
     echo >&2 'error: unable to contact mysql after 10 tries'
     exit 1

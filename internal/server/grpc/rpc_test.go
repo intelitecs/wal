@@ -11,10 +11,10 @@ import (
 
 	// adapters
 
-	"github.com/intelitecs/wal/internal/adapters/app/api"
-	"github.com/intelitecs/wal/internal/adapters/core/arithmetics"
-	"github.com/intelitecs/wal/internal/adapters/framework/left/grpc/pb"
-	"github.com/intelitecs/wal/internal/adapters/framework/right/db"
+	arithmeticsApi "github.com/intelitecs/wal/api/v1/arithmetics"
+	"github.com/intelitecs/wal/internal/arithmetics/domain"
+	service "github.com/intelitecs/wal/internal/arithmetics/service"
+	"github.com/intelitecs/wal/internal/server/db"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/test/bufconn"
@@ -38,14 +38,14 @@ func init() {
 	}
 
 	// core
-	core := arithmetics.NewAdapter()
+	core := domain.NewAdapter()
 
 	// NOTE: The application's right side port for driven
 	// adapters, in this case, a db adapter.
 	// Therefore the type for the dbAdapter parameter
 	// that is to be injected into the NewApplication will
 	// be of type DbPort
-	applicationAPI := api.NewApplication(dbAdapter, core)
+	applicationAPI := service.NewArithmeticApplication(dbAdapter, core)
 
 	// NOTE: We use dependency injection to give the grpc
 	// adapter access to the application, therefore
@@ -58,7 +58,7 @@ func init() {
 	// port for driving adapters
 	gRPCAdapter := NewAdapter(applicationAPI)
 
-	pb.RegisterArithmeticServiceServer(grpcServer, gRPCAdapter)
+	arithmeticsApi.RegisterArithmeticServiceServer(grpcServer, gRPCAdapter)
 	go func() {
 		if err := grpcServer.Serve(lis); err != nil {
 			log.Fatalf("test server start error: %v", err)
@@ -83,9 +83,9 @@ func TestGetAddition(t *testing.T) {
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
-	client := pb.NewArithmeticServiceClient(conn)
+	client := arithmeticsApi.NewArithmeticServiceClient(conn)
 
-	params := &pb.OperationParameters{
+	params := &arithmeticsApi.OperationParameters{
 		A: 1,
 		B: 1,
 	}
@@ -103,9 +103,9 @@ func TestGetSubtraction(t *testing.T) {
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
-	client := pb.NewArithmeticServiceClient(conn)
+	client := arithmeticsApi.NewArithmeticServiceClient(conn)
 
-	params := &pb.OperationParameters{
+	params := &arithmeticsApi.OperationParameters{
 		A: 1,
 		B: 1,
 	}
@@ -123,9 +123,9 @@ func TestGetMultiplication(t *testing.T) {
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
-	client := pb.NewArithmeticServiceClient(conn)
+	client := arithmeticsApi.NewArithmeticServiceClient(conn)
 
-	params := &pb.OperationParameters{
+	params := &arithmeticsApi.OperationParameters{
 		A: 1,
 		B: 1,
 	}
@@ -144,9 +144,9 @@ func TestGetDivision(t *testing.T) {
 	conn := getGRPCConnection(ctx, t)
 	defer conn.Close()
 
-	client := pb.NewArithmeticServiceClient(conn)
+	client := arithmeticsApi.NewArithmeticServiceClient(conn)
 
-	params := &pb.OperationParameters{
+	params := &arithmeticsApi.OperationParameters{
 		A: 1,
 		B: 1,
 	}

@@ -1,9 +1,9 @@
 syntax = "proto3";
 
 
-package pb;
+package arithmetics;
 
-option go_package = "./pb";
+option go_package = "./arithmetics";
 
 message Answer {
     int32 value = 1;

@@ -1,17 +1,20 @@
-package api
+package service
 
-import "github.com/intelitecs/wal/internal/ports"
+import (
+	"github.com/intelitecs/wal/internal/arithmetics/domain"
+	"github.com/intelitecs/wal/internal/ports"
+)
 
-type Application struct {
+type ArithmeticApplication struct {
 	db    ports.ArithmeticDB
-	arith ports.Arithmetics
+	arith domain.Arithmetics
 }
 
-func NewApplication(db ports.ArithmeticDB, arith ports.Arithmetics) *Application {
-	return &Application{arith: arith, db: db}
+func NewArithmeticApplication(db ports.ArithmeticDB, arith domain.Arithmetics) *ArithmeticApplication {
+	return &ArithmeticApplication{arith: arith, db: db}
 }
 
-func (a *Application) GetAddition(x, y int32) (int32, error) {
+func (a *ArithmeticApplication) GetAddition(x, y int32) (int32, error) {
 	answer, err := a.arith.Addition(x, y)
 	if err != nil {
 		return 0, err
@@ -23,7 +26,7 @@ func (a *Application) GetAddition(x, y int32) (int32, error) {
 	return answer, nil
 }
 
-func (a *Application) GetSubtraction(x, y int32) (int32, error) {
+func (a *ArithmeticApplication) GetSubtraction(x, y int32) (int32, error) {
 	answer, err := a.arith.Subtraction(x, y)
 	if err != nil {
 		return 0, err
@@ -35,7 +38,7 @@ func (a *Application) GetSubtraction(x, y int32) (int32, error) {
 	return answer, nil
 }
 
-func (a *Application) GetMultiplication(x, y int32) (int32, error) {
+func (a *ArithmeticApplication) GetMultiplication(x, y int32) (int32, error) {
 	answer, err := a.arith.Multiplication(x, y)
 	if err != nil {
 		return 0, err
@@ -47,7 +50,7 @@ func (a *Application) GetMultiplication(x, y int32) (int32, error) {
 	return answer, nil
 }
 
-func (a *Application) GetDivision(x, y int32) (int32, error) {
+func (a *ArithmeticApplication) GetDivision(x, y int32) (int32, error) {
 	answer, err := a.arith.Division(x, y)
 	if err != nil {
 		return 0, err

@@ -4,6 +4,7 @@ import (
 	"context"
 
 	api "github.com/intelitecs/wal/api/v1/log"
+	"github.com/intelitecs/wal/internal/log"
 	"github.com/intelitecs/wal/internal/server/security/authorization/acl"
 	"google.golang.org/grpc"
 )
@@ -72,7 +73,7 @@ func (s *grpcServer) ConsumeStream(req *api.ConsumeRequest, stream api.Log_Consu
 			res, err := s.Consume(stream.Context(), req)
 			switch err.(type) {
 			case nil:
-			case api.ErrOffsetOutOfRange:
+			case log.ErrOffsetOutOfRange:
 				continue
 			default:
 				return err

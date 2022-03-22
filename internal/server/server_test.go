@@ -204,7 +204,7 @@ func testConsumePastBoundary(t *testing.T,
 		t.Fatalf("consume not nil")
 	}
 	got := status.Code(err)
-	wanted := status.Code(api.ErrOffsetOutOfRange{}.GRPCStatus().Err())
+	wanted := status.Code(log.ErrOffsetOutOfRange{}.GRPCStatus().Err())
 
 	if got != wanted {
 		t.Fatalf("got err: %v want: %v", got, wanted)

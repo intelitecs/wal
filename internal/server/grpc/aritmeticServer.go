@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/intelitecs/wal/internal/adapters/framework/left/grpc/pb"
+	arithmetics "github.com/intelitecs/wal/api/v1/arithmetics"
 	"github.com/intelitecs/wal/internal/ports"
 
 	"google.golang.org/grpc"
@@ -32,7 +32,7 @@ func (grpca *Adapter) Run() {
 
 	arithmeticServiceServer := grpca
 	grpcServer := grpc.NewServer()
-	pb.RegisterArithmeticServiceServer(grpcServer, arithmeticServiceServer)
+	arithmetics.RegisterArithmeticServiceServer(grpcServer, arithmeticServiceServer)
 
 	if err := grpcServer.Serve(listen); err != nil {
 		log.Fatalf("failed to serve gRPC server over port 9000: %v", err)

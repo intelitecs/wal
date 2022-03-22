@@ -89,13 +89,13 @@ func (l *Log) Read(off uint64) (*api.Record, error) {
 	l.mu.RUnlock()
 	var s *segment
 	for _, segment := range l.segments {
-		if segment.baseOffset <= off && off < segment.nextOffset {
+		if segment.BaseOffset <= off && off < segment.NextOffset {
 			s = segment
 			break
 		}
 	}
-	if s == nil || s.nextOffset <= off {
-		return nil, api.ErrOffsetOutOfRange{Offset: off}
+	if s == nil || s.NextOffset <= off {
+		return nil, ErrOffsetOutOfRange{Offset: off}
 	}
 	return s.Read(off)
 }
@@ -128,14 +128,14 @@ func (l *Log) Reset() error {
 func (l *Log) LowestOffset() (uint64, error) {
 	l.mu.RLock()
 	defer l.mu.RUnlock()
-	return l.segments[0].baseOffset, nil
+	return l.segments[0].BaseOffset, nil
 }
 
 func (l *Log) HighestOffset() (uint64, error) {
 	l.mu.RLock()
 	defer l.mu.RUnlock()
 
-	off := l.segments[len(l.segments)-1].nextOffset
+	off := l.segments[len(l.segments)-1].NextOffset
 	if off == 0 {
 		return 0, nil
 	}
@@ -147,7 +147,7 @@ func (l *Log) Truncate(lowest uint64) error {
 	defer l.mu.Unlock()
 	var segments []*segment
 	for _, segment := range l.segments {
-		if segment.nextOffset <= lowest+1 {
+		if segment.NextOffset <= lowest+1 {
 			if err := segment.Remove(); err != nil {
 				return err
 			}
@@ -165,13 +165,13 @@ func (l *Log) Reader() io.Reader {
 	defer l.mu.RUnlock()
 	readers := make([]io.Reader, len(l.segments))
 	for i, segment := range l.segments {
-		readers[i] = &originReader{segment.store, 0}
+		readers[i] = &originReader{segment.Store, 0}
 	}
 	return io.MultiReader(readers...)
 }
 
 type originReader struct {
-	*store
+	*Store
 	off int64
 }
 
@@ -182,7 +182,7 @@ func (o *originReader) Read(p []byte) (int, error) {
 }
 
 func (l *Log) newSegment(off uint64) error {
-	segment, err := newSegment(l.Dir, off, l.Config)
+	segment, err := NewSegment(l.Dir, off, l.Config)
 	if err != nil {
 		return err
 	}

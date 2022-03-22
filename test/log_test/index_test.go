@@ -1,4 +1,4 @@
-package log
+package log_test
 
 import (
 	"io"
@@ -6,6 +6,7 @@ import (
 	"os"
 	"testing"
 
+	wal_log "github.com/intelitecs/wal/internal/log"
 	"github.com/stretchr/testify/require"
 )
 
@@ -14,12 +15,14 @@ func TestIndex(t *testing.T) {
 	require.NoError(t, err)
 	defer os.Remove(f.Name())
 
-	c := Config{}
+	c := wal_log.Config{}
 	c.Segment.MaxIndexBytes = 1024
-	idx, err := newIndex(f, c)
+	idx, err := wal_log.NewIndex(f, c)
+	t.Logf("index size: %d, ", uint64(idx.Size()))
 	require.NoError(t, err)
 	_, _, err = idx.Read(-1)
-	require.NoError(t, err)
+	//require.NoError(t, err)
+	require.Equal(t, err, io.EOF)
 	require.Equal(t, f.Name(), idx.Name())
 	entries := []struct {
 		Off uint32
@@ -41,7 +44,7 @@ func TestIndex(t *testing.T) {
 	require.Equal(t, io.EOF, err)
 	_ = idx.Close()
 	f, _ = os.OpenFile(f.Name(), os.O_RDWR, 0600)
-	idx, err = newIndex(f, c)
+	idx, err = wal_log.NewIndex(f, c)
 	require.NoError(t, err)
 	off, pos, err := idx.Read(-1)
 	require.NoError(t, err)

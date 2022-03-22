@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Mar 17 13:23:11 2022
+# Make data base, printed on Mon Mar 21 14:24:56 2022
 
 # Variables
 
@@ -229,7 +229,7 @@ SBT_HOME = /home/imhotep/.sdkman/candidates/sbt/current
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2df9e4a0-0408-4ee5-85ba-46011bed856e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-aaa73d0c-5539-41cc-ac0f-c0887da800fa.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -251,7 +251,7 @@ TLS_CONFIG_PATH = internal/server/security/authentication/tls/cloudflare/config
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /home/imhotep
+OLDPWD = /home/imhotep/go/src/github.com/intelitecs
 # default
 .VARIABLES := 
 # automatic
@@ -296,7 +296,7 @@ SPRINGBOOT_HOME = /home/imhotep/.sdkman/candidates/springboot/current
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/d5330b37_5fa5_450a_95d0_c3b177e3c1d5
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f5949bfb_d3d6_4bf3_b649_7e7bf8e8f8dd
 # automatic
 ^F = $(notdir $^)
 # environment
@@ -324,7 +324,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 89244
+VSCODE_PID = 905508
 # environment
 _CE_CONDA = 
 # variable set hash-table stats:
@@ -336,23 +336,15 @@ _CE_CONDA =
 
 # Directories
 
-# . (device 66306, inode 9666891): 17 files, no impossibilities.
+# . (device 66306, inode 9666891): 18 files, no impossibilities.
 
-# 17 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
 
 # Files
-
-genservices:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 35):
-	protoc --go-grpc_out=require_unimplemented_servers=false:internal/adapters/framework/left/grpc  \
-	--proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*svc.proto
 
 # Not a target:
 all:
@@ -361,7 +353,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-.PHONY: init test genprotobuf
+.PHONY: init test
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -376,7 +368,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-17 13:21:26.734583396
+#  Last modified 2022-03-21 04:26:35.106961431
 #  File has been updated.
 #  Successfully updated.
 
@@ -387,20 +379,6 @@ test: /home/imhotep/.wal/model.conf /home/imhotep/.wal/policy.csv
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 27):
 	go test -race ./internal/...
-
-protogen: genmessages genservices
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
-	echo 'Generated messages and services'
-	
-
-genprotobuf:
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
 
 gencert:
 #  Implicit rule search has not been done.
@@ -426,6 +404,14 @@ gencert:
 #  Modification time never checked.
 #  File has not been updated.
 
+protocgen:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 30):
+	protoc --go_out=:api/v1 --proto_path=:api/v1 api/v1/proto/*msg.proto
+	protoc --go-grpc_out=require_unimplemented_servers=false:api/v1 --proto_path=:api/v1/proto  api/v1/proto/*svc.proto
+
 init:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -434,27 +420,20 @@ init:
 #  recipe to execute (from 'Makefile', line 8):
 	mkdir -p ${CONFIG_PATH}
 
-genmessages:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 32):
-	protoc --go_out=:internal/adapters/framework/left/grpc --proto_path=internal/adapters/framework/left/grpc/proto internal/adapters/framework/left/grpc/proto/*msg.proto
-
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/35=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/28=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 328 B / avg = 10 B
-# current buf: size = 8162 B / used = 328 B / count = 32 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 29 / storage = 293 B / avg = 10 B
+# current buf: size = 8162 B / used = 293 B / count = 29 / avg = 10 B
 
-# strcache performance: lookups = 55 / hit rate = 41%
+# strcache performance: lookups = 47 / hit rate = 38%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=1/55=2%
-# Finished Make data base on Thu Mar 17 13:23:11 2022
+# Load=29/8192=0%, Rehash=0, Collisions=1/47=2%
+# Finished Make data base on Mon Mar 21 14:24:56 2022
 
  
